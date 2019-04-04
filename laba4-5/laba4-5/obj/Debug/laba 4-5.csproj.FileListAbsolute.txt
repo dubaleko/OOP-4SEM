@@ -1,0 +1,30 @@
+D:\Labs\2 sem\OOP\laba 4-5\laba 4-5\bin\Debug\laba 4-5.exe.config
+D:\Labs\2 sem\OOP\laba 4-5\laba 4-5\bin\Debug\laba 4-5.exe
+D:\Labs\2 sem\OOP\laba 4-5\laba 4-5\bin\Debug\laba 4-5.pdb
+D:\Labs\2 sem\OOP\laba 4-5\laba 4-5\obj\Debug\laba 4-5.csprojAssemblyReference.cache
+D:\Labs\2 sem\OOP\laba 4-5\laba 4-5\obj\Debug\MainWindow.g.cs
+D:\Labs\2 sem\OOP\laba 4-5\laba 4-5\obj\Debug\App.g.cs
+D:\Labs\2 sem\OOP\laba 4-5\laba 4-5\obj\Debug\laba 4-5_MarkupCompile.cache
+D:\Labs\2 sem\OOP\laba 4-5\laba 4-5\obj\Debug\laba 4-5_MarkupCompile.lref
+D:\Labs\2 sem\OOP\laba 4-5\laba 4-5\obj\Debug\MainWindow.baml
+D:\Labs\2 sem\OOP\laba 4-5\laba 4-5\obj\Debug\laba 4-5.g.resources
+D:\Labs\2 sem\OOP\laba 4-5\laba 4-5\obj\Debug\laba_4_5.Properties.Resources.resources
+D:\Labs\2 sem\OOP\laba 4-5\laba 4-5\obj\Debug\laba 4-5.csproj.GenerateResource.cache
+D:\Labs\2 sem\OOP\laba 4-5\laba 4-5\obj\Debug\laba 4-5.csproj.CoreCompileInputs.cache
+D:\Labs\2 sem\OOP\laba 4-5\laba 4-5\obj\Debug\laba 4-5.exe
+D:\Labs\2 sem\OOP\laba 4-5\laba 4-5\obj\Debug\laba 4-5.pdb
+D:\Labs\2 sem\OOP\laba4-5\laba 4-5\obj\Debug\laba 4-5.csprojAssemblyReference.cache
+D:\Labs\2 sem\OOP\laba4-5\laba 4-5\obj\Debug\App.g.cs
+D:\Labs\2 sem\OOP\laba4-5\laba 4-5\obj\Debug\laba 4-5_MarkupCompile.cache
+D:\Labs\2 sem\OOP\laba4-5\laba 4-5\obj\Debug\laba 4-5.exe
+D:\Labs\2 sem\OOP\laba4-5\laba 4-5\obj\Debug\laba 4-5.pdb
+D:\Labs\2 sem\OOP\laba4-5\laba 4-5\obj\Debug\MainWindow.g.cs
+D:\Labs\2 sem\OOP\laba4-5\laba 4-5\bin\Debug\laba 4-5.exe.config
+D:\Labs\2 sem\OOP\laba4-5\laba 4-5\bin\Debug\laba 4-5.exe
+D:\Labs\2 sem\OOP\laba4-5\laba 4-5\bin\Debug\laba 4-5.pdb
+D:\Labs\2 sem\OOP\laba4-5\laba 4-5\obj\Debug\laba 4-5_MarkupCompile.lref
+D:\Labs\2 sem\OOP\laba4-5\laba 4-5\obj\Debug\MainWindow.baml
+D:\Labs\2 sem\OOP\laba4-5\laba 4-5\obj\Debug\laba 4-5.g.resources
+D:\Labs\2 sem\OOP\laba4-5\laba 4-5\obj\Debug\laba_4_5.Properties.Resources.resources
+D:\Labs\2 sem\OOP\laba4-5\laba 4-5\obj\Debug\laba 4-5.csproj.GenerateResource.cache
+D:\Labs\2 sem\OOP\laba4-5\laba 4-5\obj\Debug\laba 4-5.csproj.CoreCompileInputs.cache

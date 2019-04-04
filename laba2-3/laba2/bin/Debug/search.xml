@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<ArrayOfStudent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Student>
+    <firstname>Дубалеко</firstname>
+    <secondname>Валентин</secondname>
+    <thirdname>Викторович</thirdname>
+    <age>19</age>
+    <dateofbirthday>14 февраля 2000 г.</dateofbirthday>
+    <specialization>ПОИТ</specialization>
+    <gender>Мужчина</gender>
+    <course>2</course>
+    <group>4</group>
+    <adress>
+      <city>Минск</city>
+      <index>346363</index>
+      <street>Гурского</street>
+      <house>23</house>
+      <flat>604</flat>
+    </adress>
+  </Student>
+  <Student>
+    <firstname>Панас</firstname>
+    <secondname>Артем</secondname>
+    <thirdname>Сергеевич</thirdname>
+    <age>18</age>
+    <dateofbirthday>2 июля 2000 г.</dateofbirthday>
+    <specialization>ПОИТ</specialization>
+    <gender>Мужчина</gender>
+    <course>2</course>
+    <group>4</group>
+    <adress>
+      <city>Минск</city>
+      <index>234324</index>
+      <street>Белорусская</street>
+      <house>6</house>
+      <flat>52</flat>
+    </adress>
+  </Student>
+  <Student>
+    <firstname>Мацуев</firstname>
+    <secondname>Илья</secondname>
+    <thirdname>Михайлович</thirdname>
+    <age>18</age>
+    <dateofbirthday>1 августа 2000 г.</dateofbirthday>
+    <specialization>ПОИТ</specialization>
+    <gender>Мужчина</gender>
+    <course>2</course>
+    <group>4</group>
+    <adress>
+      <city>Минск</city>
+      <index>436363</index>
+      <street>Серебрянная</street>
+      <house>15</house>
+      <flat>24</flat>
+    </adress>
+  </Student>
+  <Student>
+    <firstname>Овчинская</firstname>
+    <secondname>Ирина</secondname>
+    <thirdname>Андреевна</thirdname>
+    <age>19</age>
+    <dateofbirthday>1 марта 2000 г.</dateofbirthday>
+    <specialization>ДЭВИ</specialization>
+    <gender>Женщина</gender>
+    <course>2</course>
+    <group>9</group>
+    <adress>
+      <city>Минск</city>
+      <index>435345</index>
+      <street>Белорусская</street>
+      <house>21</house>
+      <flat>611</flat>
+    </adress>
+  </Student>
+</ArrayOfStudent>

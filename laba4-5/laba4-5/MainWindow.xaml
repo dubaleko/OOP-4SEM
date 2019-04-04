@@ -1,0 +1,89 @@
+﻿<Window x:Class="laba_4_5.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:laba_4_5"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="{DynamicResource Nameless-Text redactor}" Height="450" Width="800" 
+        Icon="Resources/lb.ico"
+        Style="{DynamicResource WindowStyle}"
+        >
+   
+    <Grid Margin="0,0,-0.4,0" >
+        <Menu Height="25" VerticalAlignment="Top" Style="{DynamicResource MStyle}">
+            <MenuItem Header="{DynamicResource File}" Name="Files"  Height="25" Width="65" Style="{DynamicResource MenuStyle}">
+                <MenuItem.Icon>
+                    <Image Source="file.ico"/>
+                </MenuItem.Icon>
+                <MenuItem Header="{DynamicResource New}" Click="New_Click" Style="{DynamicResource MenuStyle}"/>
+                <MenuItem Header="{DynamicResource Save}" Click="Save_Click" Style="{DynamicResource MenuStyle}"/>
+                <MenuItem Header="{DynamicResource Save as}" Click="Save_as_Click" Style="{DynamicResource MenuStyle}"/>
+                <MenuItem Header="{DynamicResource Open}" Click="Open_Click" Style="{DynamicResource MenuStyle}"/>
+                <Separator/>
+                <MenuItem Header="{DynamicResource Choose}" x:Name="menuLanguage" Style="{DynamicResource MenuStyle}">
+                    <MenuItem Header="{DynamicResource Russian}" Click="ChangeLanguageClick" x:Name="rus" Style="{DynamicResource MenuStyle}"/>
+                    <MenuItem Header="{DynamicResource English}" Click="ChangeLanguageClick" x:Name="eng" Style="{DynamicResource MenuStyle}"/>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource Style}" Style="{DynamicResource MenuStyle}">
+                    <MenuItem Header="{DynamicResource White}" Style="{DynamicResource MenuStyle}" Click="MenuItem_Click" x:Name="light"/>
+                    <MenuItem Header="{DynamicResource Black}" Style="{DynamicResource MenuStyle}" Click="MenuItem_Click" x:Name="dark"/>
+                </MenuItem>
+                <MenuItem Header="{DynamicResource Close}" Click="Close_Click" Style="{DynamicResource MenuStyle}"/>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource Edit}" Name="Edit" Height="25" Width="65" Style="{DynamicResource MenuStyle}">
+                <MenuItem.Icon>
+                    <Image Source="diskette_save_saveas_1514.ico"/>
+                </MenuItem.Icon>
+                <MenuItem Header="{DynamicResource Undo}" Command="Undo" Style="{DynamicResource MenuStyle}"/>
+                <MenuItem Header="{DynamicResource Redo}" Command="Redo" Style="{DynamicResource MenuStyle}"/>
+                <Separator/>
+                <MenuItem Header="{DynamicResource Copy}" Command="Copy" Style="{DynamicResource MenuStyle}"/>
+                <MenuItem Header="{DynamicResource Paste}" Command="Paste" Style="{DynamicResource MenuStyle}"/>
+                <MenuItem Header="{DynamicResource Cut}" Command="Cut" Style="{DynamicResource MenuStyle}"/>
+                <MenuItem Header="{DynamicResource Delete}" Command="Delete" Style="{DynamicResource MenuStyle}"/>
+            </MenuItem>
+            <ToggleButton x:Name="Bold" Click="Bold_Click" >
+                <Image Source="bold.ico" RenderTransformOrigin="1.833,0.576"/>
+            </ToggleButton>
+            <ToggleButton x:Name="Italic" Click="Italic_Click">
+                <Image Source="italic.ico"/>
+            </ToggleButton>
+            <ToggleButton Name="Underline" Click="Underline_Click">
+                <Image Source="underline.ico"/>
+            </ToggleButton>
+            <ComboBox Name ="FontFamily"  SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged" Focusable="False">
+                <ComboBoxItem Content="Calibri"/>
+                <ComboBoxItem Content="Times New Roman"/>
+                <ComboBoxItem Content="Arial"/>
+                <ComboBoxItem Content="Impact"/>
+            </ComboBox>
+            <ComboBox Name="Size"  SelectedIndex="0" SelectionChanged="Size_SelectionChanged" Focusable="False">
+                <ComboBoxItem Content="8"/>
+                <ComboBoxItem Content="10"/>
+                <ComboBoxItem Content="14"/>
+                <ComboBoxItem Content="18"/>
+                <ComboBoxItem Content="22"/>
+                <ComboBoxItem Content="26"/>
+                <ComboBoxItem Content="32"/>
+                <ComboBoxItem Content="64"/>
+                <ComboBoxItem Content="72"/>
+            </ComboBox>
+            <xctk:ColorPicker x:Name="colorpicker" SelectedColor="Black" SelectedColorChanged="Colorpicker_SelectedColorChanged"   RenderTransformOrigin="0.91,0.613" Width="60" Focusable="False" />
+        </Menu>
+        <RichTextBox Margin="0,25,0,0" Name="RichBox" PreviewDragEnter="File_Drag" PreviewDragOver="File_Drag" PreviewDrop="File_Drop"  AllowDrop="True" Style="{DynamicResource StyleRTB}" >
+            <RichTextBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="{DynamicResource Undo}" Command="Undo" Style="{DynamicResource MenuStyle}"/>
+                    <MenuItem Header="{DynamicResource Redo}" Command="Redo" Style="{DynamicResource MenuStyle}"/>
+                    <Separator/>
+                    <MenuItem Header="{DynamicResource Copy}" Command="Copy" Style="{DynamicResource MenuStyle}"/>
+                    <MenuItem Header="{DynamicResource Paste}" Command="Paste" Style="{DynamicResource MenuStyle}"/>
+                    <MenuItem Header="{DynamicResource Cut}" Command="Cut" Style="{DynamicResource MenuStyle}"/>
+                    <MenuItem Header="{DynamicResource Delete}" Command="Delete" Style="{DynamicResource MenuStyle}"/>
+                </ContextMenu>
+            </RichTextBox.ContextMenu>
+        </RichTextBox>
+    </Grid>
+</Window>

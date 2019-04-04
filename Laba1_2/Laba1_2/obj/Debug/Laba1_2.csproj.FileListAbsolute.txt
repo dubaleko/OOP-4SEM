@@ -1,0 +1,10 @@
+D:\Labs\2 sem\OOP\Laba1_2\Laba1_2\bin\Debug\Laba1_2.exe.config
+D:\Labs\2 sem\OOP\Laba1_2\Laba1_2\bin\Debug\Laba1_2.exe
+D:\Labs\2 sem\OOP\Laba1_2\Laba1_2\bin\Debug\Laba1_2.pdb
+D:\Labs\2 sem\OOP\Laba1_2\Laba1_2\obj\Debug\Laba1_2.csprojAssemblyReference.cache
+D:\Labs\2 sem\OOP\Laba1_2\Laba1_2\obj\Debug\Laba1_2.Form1.resources
+D:\Labs\2 sem\OOP\Laba1_2\Laba1_2\obj\Debug\Laba1_2.Properties.Resources.resources
+D:\Labs\2 sem\OOP\Laba1_2\Laba1_2\obj\Debug\Laba1_2.csproj.GenerateResource.cache
+D:\Labs\2 sem\OOP\Laba1_2\Laba1_2\obj\Debug\Laba1_2.csproj.CoreCompileInputs.cache
+D:\Labs\2 sem\OOP\Laba1_2\Laba1_2\obj\Debug\Laba1_2.exe
+D:\Labs\2 sem\OOP\Laba1_2\Laba1_2\obj\Debug\Laba1_2.pdb
