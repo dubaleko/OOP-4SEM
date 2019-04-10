@@ -23,7 +23,6 @@ namespace laba_4_5
         }
 
         #region New Save Save_as Open Close
-        string mystr = "";
 
         private void clear()
         {
@@ -33,76 +32,171 @@ namespace laba_4_5
             FontFamily.SelectedIndex = 0;
             Size.SelectedIndex = 0;
             colorpicker.SelectedColor = Colors.Black;
+
+            RichBox.Selection.ApplyPropertyValue(TextBlock.FontFamilyProperty, new FontFamily("Times New Roman"));
+            Bold_Click(null, null);
+            Underline_Click(null, null);
+            Italic_Click(null, null);
+            Size_SelectionChanged(null, null);
+            Colorpicker_SelectedColorChanged(null, null);
         }
 
-        private void New_Click(object sender, RoutedEventArgs e)
-        {
-            TextRange richtxt = new TextRange(RichBox.Document.ContentStart, RichBox.Document.ContentEnd);
-            if (richtxt.Text != "" && richtxt.Text != "\r\n")
-            {
-                MessageBoxResult result = MessageBox.Show(
-                  "Хотите ли вы сохранить изменения в файле?",
-                  "Сообщение",
-                  MessageBoxButton.YesNo,
-                  MessageBoxImage.Information
-                  );
-                if (result == MessageBoxResult.Yes)
-                    Save_Click(sender, e);
-                clear();
-                richtxt.Text = "";
-                mystr = "Nameless";
-                this.Title = "Nameless";
-            }
-        }
-        private void Save_Click(object sender, RoutedEventArgs e)
-        {
-            if (File.Exists(mystr))
-            {
-                TextRange richtxt = new TextRange(RichBox.Document.ContentStart, RichBox.Document.ContentEnd);
-                using (StreamWriter sw = new StreamWriter(mystr, false, System.Text.Encoding.Default))
-                {
-                    sw.WriteLine(richtxt.Text);
-                }
-            }
-            else Save_as_Click(sender, e);
-        }
-        private void Save_as_Click(object sender, RoutedEventArgs e)
-        {
-            SaveFileDialog fileDialog = new SaveFileDialog();
-            fileDialog.Filter = "Textfiles|*.txt|Allfiles|*.*";
-            Nullable<bool> dialog = fileDialog.ShowDialog();
-            TextRange richtxt = new TextRange(RichBox.Document.ContentStart, RichBox.Document.ContentEnd);
+        #region New, Save, Open and Tabs Functionality
 
-            if (dialog == true)
-            {
-                using (StreamWriter sw = new StreamWriter(fileDialog.FileName, false, System.Text.Encoding.Default))
-                {
-                    sw.WriteLine(richtxt.Text);
-                    string str = fileDialog.FileName.Split('\\').Last();
-                    mystr = fileDialog.FileName;
-                    this.Title = str;
-                }
-            }
-        }
-        private void Open_Click(object sender, RoutedEventArgs e)
+        private static Dictionary<string, string> FilesText { get; set; } = new Dictionary<string, string>() { ["nameless"] = string.Empty };
+        private static string CurrentTabName { get; set; } = "nameless";
+        private static string bufFileName = string.Empty;
+
+        private string GetText()
         {
-            OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Filter = "Textfiles|*.txt|Allfiles|*.*";
-            Nullable<bool> dialog = fileDialog.ShowDialog();
-            TextRange richtxt = new TextRange(RichBox.Document.ContentStart, RichBox.Document.ContentEnd);
-            if (dialog == true)
-            {
-                using (StreamReader sr = new StreamReader(fileDialog.FileName, System.Text.Encoding.Default))
-                {
-                    richtxt.Text = "";
-                    richtxt.Text += sr.ReadToEnd();
-                    mystr = fileDialog.FileName;
-                    string str = fileDialog.FileName.Split('\\').Last();
-                    this.Title = str;
-                }
-            }
+            string content = new TextRange(RichBox.Document.ContentStart, RichBox.Document.ContentEnd).Text;
+            return content == string.Empty ? string.Empty : content.Substring(0, content.Length - 2);
+        }
+
+        private void NewFile_Click(object sender, RoutedEventArgs e)
+        {
             clear();
+            bufFileName = string.Empty;
+            CreateNewTab("nameless", string.Empty, false);
         }
+
+        private void SaveFile_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                TabItem tab = Tabs.SelectedItem as TabItem;
+
+                if (tab.Tag.ToString() == true.ToString())
+                {
+                    File.Delete(bufFileName);
+                    string content = GetText();
+                    FilesText[bufFileName] = content;
+                    File.WriteAllBytes(bufFileName, Encoding.UTF8.GetBytes(content));
+                }
+                else
+                {
+                    SaveFileDialog saveFileDialog = new SaveFileDialog();
+                    saveFileDialog.Filter = "Text file (*.txt)|*.txt|HTML file (*.html)|*.html";
+                    string content = GetText();
+                    RichBox.Background = Brushes.White;
+                    if (saveFileDialog.ShowDialog() == true)
+                    {
+                        File.WriteAllBytes(saveFileDialog.FileName, Encoding.UTF8.GetBytes(content));
+                        tab.Tag = true.ToString();
+                        bufFileName = saveFileDialog.FileName;
+
+                        Label header = new Label() { Content = saveFileDialog.SafeFileName, Margin = new Thickness(0, -5, 0, 0) };
+                        header.MouseLeftButtonDown += Tab_Click;
+                        header.MouseRightButtonDown += CloseTab_Click;
+
+                        tab.Header = header;
+                        CurrentTabName = saveFileDialog.SafeFileName;
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void OpenFile_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Text file (*.txt)|*.txt|HTML file (*.html)|*.html";
+                if (openFileDialog.ShowDialog() == true)
+                {
+                    byte[] content = File.ReadAllBytes(openFileDialog.FileName);
+                    string strContent = Encoding.UTF8.GetString(content);
+                    bufFileName = openFileDialog.FileName;
+                    clear();
+                    CreateNewTab(openFileDialog.SafeFileName, strContent, true);
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        private Visibility CheckTabCount()
+        {
+            if (Tabs.Items.Count == 0)
+            {
+                RichBox.IsEnabled = false;
+                return Visibility.Hidden;
+            }
+            else
+            {
+                RichBox.IsEnabled = true;
+                return Visibility.Visible;
+            }
+        }
+
+        private void CreateNewTab(string tabName, string content, bool isOpened)
+        {
+            ToNewTab(content);
+            if (tabName == "nameless")
+                tabName += Tabs.Items.Count.ToString();
+            Label header = new Label()
+            {
+                Content = tabName,
+                Margin = new Thickness(0, -3, 0, 0),
+                Style = (Style)FindResource("Label")
+            };
+            header.MouseLeftButtonDown += Tab_Click;
+            header.MouseRightButtonDown += CloseTab_Click;
+            TabItem newTab = new TabItem()
+            {
+                Tag = isOpened.ToString(),
+                Header = header,
+                LayoutTransform = new RotateTransform(-90),
+                IsSelected = true,
+                Style = (Style)FindResource("Tabs")
+            };
+            CurrentTabName = tabName;
+            FilesText.Add(tabName, content);
+            Tabs.Items.Add(newTab);
+            Tabs.Visibility = CheckTabCount();
+        }
+
+        private void ToNewTab(string content)
+        {
+            if (CurrentTabName != string.Empty)
+                FilesText[CurrentTabName] = GetText();
+            RichBox.Document.Blocks.Clear();
+            RichBox.Document.Blocks.Add(new Paragraph(new Run(content)));
+        }
+
+        private void Tab_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            string newTabName = ((Label)sender).Content.ToString();
+            if (CurrentTabName == newTabName)
+                return;
+            ToNewTab(FilesText[newTabName]);
+            CurrentTabName = newTabName;
+
+        }
+
+        private void CloseTab_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            FilesText.Remove(((Label)sender).Content.ToString());
+            Tabs.Items.Remove(((Label)sender).Parent);
+            Tabs.Visibility = CheckTabCount();
+            RichBox.Document.Blocks.Clear();
+            CurrentTabName = string.Empty;
+            if (Tabs.Items.Count != 0)
+            {
+                TabItem currentTab = Tabs.SelectedItem as TabItem;
+                CurrentTabName = ((Label)currentTab.Header).Content.ToString();
+                RichBox.Document.Blocks.Add(new Paragraph(new Run(FilesText[CurrentTabName])));
+            }
+        }
+
+        #endregion
+
         private void Close_Click(object sender, RoutedEventArgs e) { this.Close(); }
         #endregion
 
@@ -181,6 +275,7 @@ namespace laba_4_5
                 {
                     Source = new Uri(String.Format("Resources/lang.xaml"), UriKind.Relative)
                 };
+                Edit.Width = 60;
             }
         }
         #endregion
@@ -226,6 +321,7 @@ namespace laba_4_5
         }
 
         #endregion
+
     }
 }
     

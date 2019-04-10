@@ -6,7 +6,6 @@
     <v:String x:Key="File">Файл</v:String>
     <v:String x:Key="New">Новый</v:String>
     <v:String x:Key="Save">Сохранить</v:String>
-    <v:String x:Key="Save as">Сохранить как</v:String>
     <v:String x:Key="Open">Открыть</v:String>
     <v:String x:Key="Close">Закрыть</v:String>
     <v:String x:Key="Edit">Редактировать</v:String>
@@ -22,6 +21,8 @@
     <v:String x:Key="Black">Темный</v:String>
     <v:String x:Key="Russian">Русский</v:String>
     <v:String x:Key="English">Английский</v:String>
+    <v:String x:Key="HideButton">Скрыть колорпикер</v:String>
+    <v:String x:Key="txtRedactor">Текстовый редактор</v:String>
 
 </ResourceDictionary>
 

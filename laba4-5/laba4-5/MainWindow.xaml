@@ -6,21 +6,56 @@
         xmlns:local="clr-namespace:laba_4_5"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="{DynamicResource Nameless-Text redactor}" Height="450" Width="800" 
+        Title="{DynamicResource txtRedactor}" Height="450" Width="800" 
         Icon="Resources/lb.ico"
         Style="{DynamicResource WindowStyle}"
         >
-   
-    <Grid Margin="0,0,-0.4,0" >
-        <Menu Height="25" VerticalAlignment="Top" Style="{DynamicResource MStyle}">
+    <Window.Resources>
+        <Style TargetType="xctk:ColorPicker">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=button, Path=IsPressed}" Value="True">
+                    <Setter Property="Visibility"  Value="Collapsed"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="Gray" BorderThickness="2">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Pink" />
+                </Trigger>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsMouseOver" Value="True" />
+                        <Condition Property="IsPressed" Value="True" />
+                    </MultiTrigger.Conditions>
+                    <MultiTrigger.Setters>
+                        <Setter Property="FontSize" Value="14" />
+                    </MultiTrigger.Setters>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <DockPanel >
+        <Menu Height="25" DockPanel.Dock="Top" Style="{DynamicResource MStyle}">
             <MenuItem Header="{DynamicResource File}" Name="Files"  Height="25" Width="65" Style="{DynamicResource MenuStyle}">
                 <MenuItem.Icon>
                     <Image Source="file.ico"/>
                 </MenuItem.Icon>
-                <MenuItem Header="{DynamicResource New}" Click="New_Click" Style="{DynamicResource MenuStyle}"/>
-                <MenuItem Header="{DynamicResource Save}" Click="Save_Click" Style="{DynamicResource MenuStyle}"/>
-                <MenuItem Header="{DynamicResource Save as}" Click="Save_as_Click" Style="{DynamicResource MenuStyle}"/>
-                <MenuItem Header="{DynamicResource Open}" Click="Open_Click" Style="{DynamicResource MenuStyle}"/>
+                <MenuItem Header="{DynamicResource New}" Click="NewFile_Click" Style="{DynamicResource MenuStyle}"/>
+                <MenuItem Header="{DynamicResource Save}" Click="SaveFile_Click" Style="{DynamicResource MenuStyle}"/>
+                <MenuItem Header="{DynamicResource Open}" Click="OpenFile_Click" Style="{DynamicResource MenuStyle}"/>
                 <Separator/>
                 <MenuItem Header="{DynamicResource Choose}" x:Name="menuLanguage" Style="{DynamicResource MenuStyle}">
                     <MenuItem Header="{DynamicResource Russian}" Click="ChangeLanguageClick" x:Name="rus" Style="{DynamicResource MenuStyle}"/>
@@ -44,6 +79,7 @@
                 <MenuItem Header="{DynamicResource Cut}" Command="Cut" Style="{DynamicResource MenuStyle}"/>
                 <MenuItem Header="{DynamicResource Delete}" Command="Delete" Style="{DynamicResource MenuStyle}"/>
             </MenuItem>
+            <Button Name="button" Content="{DynamicResource HideButton}"/>
             <ToggleButton x:Name="Bold" Click="Bold_Click" >
                 <Image Source="bold.ico" RenderTransformOrigin="1.833,0.576"/>
             </ToggleButton>
@@ -70,20 +106,23 @@
                 <ComboBoxItem Content="64"/>
                 <ComboBoxItem Content="72"/>
             </ComboBox>
-            <xctk:ColorPicker x:Name="colorpicker" SelectedColor="Black" SelectedColorChanged="Colorpicker_SelectedColorChanged"   RenderTransformOrigin="0.91,0.613" Width="60" Focusable="False" />
+            <xctk:ColorPicker x:Name="colorpicker"  SelectedColor="Black" SelectedColorChanged="Colorpicker_SelectedColorChanged"   RenderTransformOrigin="0.91,0.613" Width="60" Focusable="False" />
         </Menu>
-        <RichTextBox Margin="0,25,0,0" Name="RichBox" PreviewDragEnter="File_Drag" PreviewDragOver="File_Drag" PreviewDrop="File_Drop"  AllowDrop="True" Style="{DynamicResource StyleRTB}" >
-            <RichTextBox.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="{DynamicResource Undo}" Command="Undo" Style="{DynamicResource MenuStyle}"/>
-                    <MenuItem Header="{DynamicResource Redo}" Command="Redo" Style="{DynamicResource MenuStyle}"/>
-                    <Separator/>
-                    <MenuItem Header="{DynamicResource Copy}" Command="Copy" Style="{DynamicResource MenuStyle}"/>
-                    <MenuItem Header="{DynamicResource Paste}" Command="Paste" Style="{DynamicResource MenuStyle}"/>
-                    <MenuItem Header="{DynamicResource Cut}" Command="Cut" Style="{DynamicResource MenuStyle}"/>
-                    <MenuItem Header="{DynamicResource Delete}" Command="Delete" Style="{DynamicResource MenuStyle}"/>
-                </ContextMenu>
-            </RichTextBox.ContextMenu>
-        </RichTextBox>
-    </Grid>
+        <StackPanel DockPanel.Dock="Right" Width="20"  Orientation="Vertical">
+            <TabControl x:Name="Tabs" TabStripPlacement="Left" HorizontalAlignment="Center">
+                <TabItem Tag="false" Style="{DynamicResource Tabs}">
+                    <TabItem.Header>
+                        <Label Content="nameless"  MouseLeftButtonDown="Tab_Click" MouseRightButtonDown="CloseTab_Click" Margin="0,-3,0,0" Style="{DynamicResource Label}"/>
+                    </TabItem.Header>
+                    <TabItem.LayoutTransform>
+                        <RotateTransform Angle="-90"></RotateTransform>
+                    </TabItem.LayoutTransform>
+                </TabItem>
+
+            </TabControl>
+        </StackPanel>
+
+        <RichTextBox  Name="RichBox" PreviewDragEnter="File_Drag" PreviewDragOver="File_Drag" PreviewDrop="File_Drop" Tag="New file"  AllowDrop="True" AcceptsTab="True" AcceptsReturn="True" Style="{DynamicResource StyleRTB}" />
+    
+    </DockPanel>
 </Window>
