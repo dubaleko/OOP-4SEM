@@ -41,8 +41,6 @@ namespace laba_4_5
             Colorpicker_SelectedColorChanged(null, null);
         }
 
-        #region New, Save, Open and Tabs Functionality
-
         private static Dictionary<string, string> FilesText { get; set; } = new Dictionary<string, string>() { ["nameless"] = string.Empty };
         private static string CurrentTabName { get; set; } = "nameless";
         private static string bufFileName = string.Empty;
@@ -195,8 +193,6 @@ namespace laba_4_5
             }
         }
 
-        #endregion
-
         private void Close_Click(object sender, RoutedEventArgs e) { this.Close(); }
         #endregion
 
@@ -321,7 +317,6 @@ namespace laba_4_5
         }
 
         #endregion
-
     }
 }
     
