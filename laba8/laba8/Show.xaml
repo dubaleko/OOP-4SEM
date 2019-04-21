@@ -1,0 +1,31 @@
+﻿<Window x:Class="laba8.Show"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:laba8"
+         ResizeMode ="CanMinimize"
+        WindowStyle="ThreeDBorderWindow"
+        mc:Ignorable="d"
+        Title="Show" Height="341.4" Width="648.15">
+    <Grid>
+        <DataGrid Name="datagrid" HorizontalAlignment="Left" Height="240" VerticalAlignment="Top" Width="632">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ФИО" Binding="{Binding Path=FIO}"  />
+                <DataGridTextColumn Header="Возраст" Binding="{Binding Path=Age}" />
+                <DataGridTextColumn Header="Дата рождения" Binding="{Binding Path=date}" />
+                <DataGridTextColumn Header="Специальность" Binding="{Binding Path=specialization}"/>
+                <DataGridTextColumn Header="Пол" Binding="{Binding Path=gender}"/>
+                <DataGridTextColumn Header="Курс" Binding="{Binding Path=Course}"/>
+                <DataGridTextColumn Header="Группа" Binding="{Binding Path=Group}"/>
+                <DataGridTextColumn Header="Город" Binding="{Binding Path=City}" />
+                <DataGridTextColumn Header="Улица" Binding="{Binding Path=Street}"/>
+                <DataGridTextColumn Header="Индекс" Binding="{Binding Path=Index}"/>
+                <DataGridTextColumn Header="Дом" Binding="{Binding Path=Home}"/>
+                <DataGridTextColumn Header="Квартира" Binding="{Binding Path=Flat}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Отобразить данные" HorizontalAlignment="Left" Margin="155,261,0,0" VerticalAlignment="Top" Width="150" Height="30" Click="Show_Click"/>
+        <Button Content="Назад" HorizontalAlignment="Left" Margin="328,261,0,0" VerticalAlignment="Top" Width="137" Height="30" Click="Comeback_Click"/>
+    </Grid>
+</Window>

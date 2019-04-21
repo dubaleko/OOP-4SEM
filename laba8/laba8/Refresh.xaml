@@ -1,0 +1,19 @@
+﻿<Window x:Class="laba8.Refresh"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:laba8"
+        mc:Ignorable="d"
+        ResizeMode ="CanMinimize"
+        WindowStyle="ThreeDBorderWindow"
+        WindowStartupLocation="CenterScreen"
+        Title="Refresh" Height="146.4" Width="698.2">
+    <Grid>
+        <Label Content="Введите запрос для обновления данных" HorizontalAlignment="Left" Margin="10,29,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="Text" HorizontalAlignment="Left" Height="23" Margin="247,33,0,0" VerticalAlignment="Top" Width="423"/>
+        <Button Content="Обновить данные" Click="UpdateData_Click" HorizontalAlignment="Left" Margin="190,80,0,0" VerticalAlignment="Top" Width="125"/>
+        <Button Content="Назад" Click="Button_Click" HorizontalAlignment="Left" Margin="365,80,0,0" VerticalAlignment="Top" Width="75"/>
+
+    </Grid>
+</Window>

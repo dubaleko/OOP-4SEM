@@ -17,12 +17,12 @@ using System.Windows.Shapes;
 namespace laba8
 {
     /// <summary>
-    /// Логика взаимодействия для Remove.xaml
+    /// Логика взаимодействия для Refresh.xaml
     /// </summary>
-    public partial class Remove : Window
+    public partial class Refresh : Window
     {
         string connectionString;
-        public Remove()
+        public Refresh()
         {
             InitializeComponent();
             string path = @"D:\Labs\2 sem\OOP\laba8\laba8\bin\Debug\App.config";
@@ -31,12 +31,10 @@ namespace laba8
                 connectionString = sr.ReadToEnd();
             }
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void UpdateData_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (string.IsNullOrEmpty(FIO.Text)) throw new Exception("Заполните поле");
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
@@ -44,23 +42,19 @@ namespace laba8
                     SqlCommand command = connection.CreateCommand();
                     command.Transaction = transaction;
 
-                    command.CommandText = "DELETE FROM Adress where Полное_Имя_Жильца = '" + FIO.Text + "'";
+                    command.CommandText = Text.Text;
                     command.ExecuteNonQuery();
-                    command.CommandText = "DELETE FROM Student where ФИО='" + FIO.Text + "'";
-                    command.ExecuteNonQuery();
-
                     transaction.Commit();
-                    MessageBox.Show("Данные удалены", "Удаление данных", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Данные обновлены", "Обновление данных", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                FIO.Text = "";
+                Text.Clear();
             }
             catch (Exception x)
             {
                 MessageBox.Show($"Ошибка: {x.Message}", "Сообщение об ошибке", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
             StartWindow startWindow = new StartWindow();
             startWindow.Show();

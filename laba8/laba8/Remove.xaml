@@ -6,6 +6,8 @@
         xmlns:local="clr-namespace:laba8"
         WindowStartupLocation="CenterScreen"
         mc:Ignorable="d"
+         ResizeMode ="CanMinimize"
+        WindowStyle="ThreeDBorderWindow"
         Title="Remove" Height="136.4" Width="528.2">
     <Grid>
         <Label Content="ФИО того кого хотите удалить из БД" HorizontalAlignment="Left" Margin="22,20,0,0" VerticalAlignment="Top"/>

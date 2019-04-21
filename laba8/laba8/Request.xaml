@@ -1,0 +1,20 @@
+﻿<Window x:Class="laba8.Request"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:laba8"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode ="CanMinimize"
+        WindowStyle="ThreeDBorderWindow"
+        Title="Request" Height="396.4" Width="378.2">
+    <Grid Margin="0,0,4,0.2">
+        <Button Content="Выполнить запрос" HorizontalAlignment="Left" Margin="50,320,0,0" VerticalAlignment="Top" Width="118" Height="30" Click="dorequest_Click"/>
+        <Button Content="Назад" HorizontalAlignment="Left" Margin="210,320,0,0" VerticalAlignment="Top" Width="93" Height="30" Click="Comeback_Click"/>
+        <DataGrid Name="datagrid" HorizontalAlignment="Left" Height="264" VerticalAlignment="Top" Width="353"/>
+        <RadioButton Content="Запрос №1" Name="Request1" HorizontalAlignment="Left" Margin="20,280,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="Запрос №2" Name="Request2" HorizontalAlignment="Left" Margin="132,280,0,0" VerticalAlignment="Top"/>
+        <RadioButton Content="Запрос №3" Name="Request3" HorizontalAlignment="Left" Margin="255,280,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.1,0.658"/>
+    </Grid>
+</Window>

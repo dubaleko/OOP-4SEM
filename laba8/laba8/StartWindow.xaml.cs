@@ -37,5 +37,26 @@ namespace laba8
             this.Close();
             remove.Show();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Show show = new Show();
+            this.Close();
+            show.Show();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Request request = new Request();
+            this.Close();
+            request.Show();
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            Refresh refresh = new Refresh();
+            this.Close();
+            refresh.Show();
+        }
     }
 }

@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:laba8"
         mc:Ignorable="d"
+         ResizeMode ="CanMinimize"
+        WindowStyle="ThreeDBorderWindow"
         WindowStartupLocation="CenterScreen"
+        
         Title="Добавление элемента" Height="306.4" Width="393.2">
     <Grid Name="grid">
         <TextBox Name="FIO" HorizontalAlignment="Left" Height="20" Margin="68,10,0,0" VerticalAlignment="Top" Width="295"/>
@@ -56,8 +59,7 @@
         <TextBox Name="Home" HorizontalAlignment="Left" Height="20" Margin="68,203,0,0"  VerticalAlignment="Top" Width="70"/>
         <Label Content="Квартира" HorizontalAlignment="Left" Margin="153,202,0,0" VerticalAlignment="Top"/>
         <TextBox Name="Flat" HorizontalAlignment="Left" Height="20" Margin="223,202,0,0"  VerticalAlignment="Top" Width="120"/>
-        <Button Content="Добавить данные" HorizontalAlignment="Left" Margin="18,239,0,0" Click="AddData_Click" VerticalAlignment="Top" Width="107"/>
-        <Button Content="Назад" HorizontalAlignment="Left" Margin="268,239,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" />
-        <Button Content="Обновить" HorizontalAlignment="Left" Margin="153,239,0,0" VerticalAlignment="Top" Width="75" Click="UpdateData_Click"/>
+        <Button Content="Добавить данные" HorizontalAlignment="Left" Margin="68,239,0,0" Click="AddData_Click" VerticalAlignment="Top" Width="107"/>
+        <Button Content="Назад" HorizontalAlignment="Left" Margin="206,239,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" />
     </Grid>
 </Window>
