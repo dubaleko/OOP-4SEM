@@ -1,0 +1,79 @@
+﻿<Window x:Class="oop13.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:oop13"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="300" Width="400">
+    <Grid>
+        <TabControl >
+            <TabItem Header="Adapter">
+                <StackPanel Background="#7a6e6c">
+                    <TextBlock Name="AdapterTxtbl" 
+                       Background="#ecede3"
+                       FontSize="14"
+                   Width="350" Height="150"
+                       Margin="7"/>
+                    <Button Name="Adapter_Button"
+                    Click="Adapter_Button_Click"
+                    Background="#ecede3"
+                Width="100" Height="30"
+                VerticalAlignment="Bottom"
+                Margin="10"
+                Content="Adapter"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Decorator">
+                <StackPanel Background="#3b2b24">
+                    <TextBlock Name="DecoratorTxtbl"                       
+                       Background="#ecede3"
+                       FontSize="14"                         
+                   Width="350" Height="150"
+                       TextWrapping="Wrap" 
+                       Margin="7"/>
+                    <Button Name="Decorator_Button"
+                    Click="Decorator_Button_Click"
+                    Background="#ecede3"
+                Width="100" Height="30"
+                VerticalAlignment="Bottom"
+                Margin="10"
+                Content="Decorator"/>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Coposite">
+                <StackPanel  Background="#3b2b24">
+                    <ListBox Name="CompositeTxtbl"                       
+                     Background="#ecede3"
+                     FontSize="14"                         
+                   Width="350" Height="150"
+                     ScrollViewer.CanContentScroll="True"
+                       Margin="10"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Name="Composite_Button"
+                    Click="Composite_Button_Click"
+                    Background="#ecede3"
+                Width="100" Height="30"
+                VerticalAlignment="Bottom"
+                Margin="10"
+                Content="Composite"/>
+                        <Button Name="FindItem_Button"
+                    Click="Find_Button_Click"
+                    Background="#ecede3"
+                Width="100" Height="30"
+                VerticalAlignment="Bottom"
+                Margin="10"
+                Content="Find Letter"/>
+                        <Button Name="FindItem2_Button"
+                    Click="Find2_Button_Click"
+                    Background="#ecede3"
+                Width="100" Height="30"
+                VerticalAlignment="Bottom"
+                Margin="10"
+                Content="Find Toy"/>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+        </TabControl>          
+    </Grid>
+</Window>

@@ -1,0 +1,50 @@
+﻿<Window x:Class="Lab12.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab12"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="450" Width="800">
+    <DockPanel LastChildFill="True">
+        <StackPanel DockPanel.Dock="Left" Width="120">
+            <Button Content="Фабрика" Click="OnFactoryOpen"/>
+            <Button Content="Создать босса" Click="OnCreateBoss"/>
+            <Button Content="Клонировать босса" Click="OnCloneBoss"/>
+            <Label Content="Крыша: " Margin="0 10 0 0"></Label>
+            <ComboBox Name="roofComboBox" >
+                <ComboBoxItem>Деревянная</ComboBoxItem>
+                <ComboBoxItem>Каменная</ComboBoxItem>
+                <ComboBoxItem>Железная</ComboBoxItem>
+            </ComboBox>
+            <Label Content="Стена: "></Label>
+            <ComboBox x:Name="wallComboBox">
+                <ComboBoxItem>Деревянная</ComboBoxItem>
+                <ComboBoxItem>Каменная</ComboBoxItem>
+                <ComboBoxItem>Железная</ComboBoxItem>
+            </ComboBox>
+            <Label Content="Окно: "></Label>
+            <ComboBox Name="windowComboBox">
+                <ComboBoxItem>Деревянная</ComboBoxItem>
+                <ComboBoxItem>Каменная</ComboBoxItem>
+                <ComboBoxItem>Железная</ComboBoxItem>
+            </ComboBox>
+            <Label Content="Дверь: "></Label>
+            <ComboBox Name="doorComboBox">
+                <ComboBoxItem>Деревянная</ComboBoxItem>
+                <ComboBoxItem>Каменная</ComboBoxItem>
+                <ComboBoxItem>Железная</ComboBoxItem>
+            </ComboBox>
+            <Button Content="Создать дом" Click="OnCreateHouse" Margin="0 5 0 0"/>
+        </StackPanel>
+        <ListView DockPanel.Dock="Right" Width="120" Name="factory"/>
+        <WrapPanel DockPanel.Dock="Top" x:Name="flat"/>
+        <WrapPanel DockPanel.Dock="Top">
+            <TextBlock Name="cloneTextBox"/>
+        </WrapPanel>
+        <Grid>
+            <TextBlock Name="Monster" TextWrapping="Wrap"/>
+        </Grid>
+    </DockPanel>
+</Window>
